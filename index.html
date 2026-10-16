@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>BLOODx | Pack de edição para gamers e edição sob encomenda</title>
+<meta name="description" content="Pack do NunesX com aulas, presets, plugins, efeitos sonoros e configurações de renderização para After Effects e Vegas. Edição sob encomenda para Free Fire e outros jogos. Vendas pelo Discord.">
+<meta name="theme-color" content="#070405">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BLOODx | Pack de edição para gamers">
+<meta property="og:description" content="Tudo para editar no After e no Vegas em um só pack. Edição sob encomenda. Venda pelo Discord.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: foto fixa atrás da página, vidro fosco atrás de todo texto, abertura com espaço para a marca aparecer no banner */
+:root {
+  --ink: #070405;
+  --deep: #1c050a;
+  --blood: #d91420;
+  --ember: #ff3d3d;
+  --rose: #ff9a9a;
+  --text: #f7eded;
+  --muted: #b99ea0;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-line: rgba(255, 255, 255, 0.15);
+  --panel: rgba(10, 3, 5, 0.58);
+  --f-display: "Unbounded", "Trebuchet MS", sans-serif;
+  --f-body: "DM Sans", "Segoe UI", sans-serif;
+  --f-mono: "DM Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; }
+
+/* ---------- Banner fixo ---------- */
+.photo {
+  position: fixed; inset: 0; z-index: -1; transform: translateZ(0);
+  background: url("images/fundo-blur.jpg") 50% 50% / cover no-repeat;
+}
+.photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(70% 55% at 20% 25%, rgba(217,20,32,.3), transparent 70%),
+    linear-gradient(180deg, rgba(7,4,5,0) 0%, rgba(7,4,5,.45) 100%);
+}
+.banner {
+  position: relative;
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  overflow: hidden;
+  isolation: isolate;
+}
+.orb { position: absolute; border-radius: 50%; z-index: -1; pointer-events: none; }
+.orb.a { width: 640px; height: 640px; top: -260px; right: -180px; background: radial-gradient(circle, rgba(217,20,32,.4), transparent 65%); }
+.orb.b { width: 560px; height: 560px; bottom: -240px; left: -180px; background: radial-gradient(circle, rgba(122,11,20,.55), transparent 65%); }
+.orb.c { width: 420px; height: 420px; top: 40%; left: 52%; background: radial-gradient(circle, rgba(255,154,154,.12), transparent 65%); }
+
+/* ---------- Painéis de vidro: o desfoque fica atrás das letras ---------- */
+nav, .hero > div, main > section.block, footer {
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-line);
+  border-radius: 28px;
+}
+
+nav {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  margin-top: 16px; padding: 10px 14px; border-radius: 999px;
+}
+.logo { grid-column: 2; text-align: center; font-family: var(--f-display); font-weight: 900; font-size: 1.15rem; letter-spacing: -0.01em; text-decoration: none; }
+.logo small { font-size: .62em; font-weight: 700; color: var(--ember); margin-left: 1px; }
+.links { grid-column: 3; justify-self: end; display: flex; gap: 6px; flex-wrap: wrap; }
+.links a {
+  position: relative; overflow: hidden;
+  text-decoration: none; font-size: .92rem; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid transparent; transition: background .25s, border-color .25s, transform .25s;
+}
+.links a:hover { background: var(--glass); border-color: var(--glass-line); transform: translateY(-2px); }
+
+.hero {
+  display: grid; grid-template-columns: minmax(0, 680px); align-items: center;
+  padding-block: clamp(24px, 5vh, 48px) 56px;
+}
+.hero > * { min-width: 0; }
+.hero > div { padding: 36px 40px 40px; }
+.tag {
+  font-family: var(--f-mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--rose); display: inline-flex; gap: 10px; align-items: center;
+}
+.tag::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--ember); box-shadow: 0 0 12px var(--ember); animation: rec 1.4s ease-in-out infinite; }
+h1 {
+  font-family: var(--f-display); font-weight: 900; line-height: 1.04; letter-spacing: -0.03em;
+  font-size: clamp(2rem, 5.6vw, 3.9rem); margin: 18px 0 20px; text-wrap: balance;
+}
+h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--ember), var(--rose), var(--blood), var(--ember));
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shine 7s linear infinite;
+}
+.lead { color: #f0d6d7; max-width: 48ch; font-size: 1.08rem; margin: 0 0 28px; }
+.cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  position: relative; overflow: hidden;
+  font: inherit; font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,.22); color: var(--text); background: rgba(255,255,255,.07);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 10px 26px -14px rgba(0,0,0,.7);
+  transition: transform .2s ease-out, box-shadow .25s, background .25s, border-color .25s;
+}
+.btn:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.4); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 16px 42px -14px rgba(255,61,61,.8); }
+.btn.primary { background: linear-gradient(135deg, rgba(255,61,61,.55), rgba(217,20,32,.42)); color: #fff; border-color: rgba(255,150,150,.5); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 12px 30px -12px rgba(217,20,32,.9); }
+.btn.primary:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 16px 38px -10px rgba(255,61,61,.95); background: linear-gradient(135deg, rgba(255,90,90,.72), rgba(232,32,44,.6)); border-color: rgba(255,170,170,.7); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 34px; }
+.stat { padding: 14px 16px; border-radius: 16px; background: var(--glass); border: 1px solid var(--glass-line); }
+.stat b { display: block; font-family: var(--f-display); font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat span { font-size: .8rem; color: var(--muted); }
+
+/* Linha do tempo de edição */
+.timeline { touch-action: pan-y; cursor: ew-resize; position: relative; margin-top: 26px; padding: 12px 14px; border-radius: 16px; background: rgba(0,0,0,.35); border: 1px solid var(--glass-line); overflow: hidden; }
+.timeline .tc { font-family: var(--f-mono); font-size: .78rem; color: var(--rose); font-variant-numeric: tabular-nums; display: flex; justify-content: space-between; margin-bottom: 8px; }
+.track { display: flex; gap: 4px; height: 14px; margin-top: 6px; }
+.track i { display: block; border-radius: 3px; background: linear-gradient(90deg, var(--blood), #7a0b14); }
+.track.t2 i { background: linear-gradient(90deg, #5a1a22, #2a0b10); }
+.track.t3 i { background: linear-gradient(90deg, #ff9a9a, #c55); }
+.playhead { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; box-shadow: 0 0 12px #fff; left: 14px; transform: translateX(var(--x, 0px)); will-change: transform; pointer-events: none; }
+
+/* ---------- Faixa em movimento ---------- */
+.ticker { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); overflow: hidden; background: var(--blood); color: #fff; border-block: 1px solid rgba(255,255,255,.2); }
+.ticker .track-t { display: flex; width: max-content; animation: slide 30s linear infinite; }
+.ticker span { font-family: var(--f-display); font-weight: 700; font-size: .85rem; letter-spacing: .02em; padding: 14px 28px; white-space: nowrap; display: inline-flex; align-items: center; gap: 28px; text-transform: uppercase; }
+.ticker span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .6; }
+
+/* ---------- Seções ---------- */
+main > section.block { margin-top: 56px; padding: 44px 40px 48px; }
+h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.5rem, 3.8vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 14px; text-wrap: balance; }
+.sub { color: var(--muted); max-width: 58ch; margin: 0 0 38px; }
+
+.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.card {
+  position: relative; overflow: hidden; padding: 26px; border-radius: 22px; min-width: 0;
+  background: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+  border: 1px solid var(--glass-line);
+  transition: transform .35s, border-color .35s;
+}
+.card::before {
+  content: ""; position: absolute; width: 250px; height: 250px; border-radius: 50%; right: -90px; top: -90px;
+  background: radial-gradient(circle, var(--c, var(--blood)) 0%, transparent 70%); opacity: .55; transition: opacity .35s, transform .5s;
+}
+.card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,.34); }
+.card:hover::before { opacity: .85; transform: scale(1.3); }
+.card > * { position: relative; }
+.card .kicker { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--rose); }
+.card h3 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; margin: 10px 0 8px; letter-spacing: -0.01em; }
+.card p { margin: 0 0 18px; color: #f0d6d7; font-size: .96rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.meta span { font-family: var(--f-mono); font-size: .78rem; padding: 5px 10px; border-radius: 999px; background: rgba(0,0,0,.35); border: 1px solid var(--glass-line); font-variant-numeric: tabular-nums; }
+.price { margin-top: 18px; font-family: var(--f-display); font-weight: 500; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.price small { font-family: var(--f-body); font-size: .8rem; color: var(--muted); }
+
+.strip { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 20 / 8; max-width: 100%; border: 1px solid var(--glass-line); margin-bottom: 26px; background: #000; }
+.strip .img { position: absolute; inset: 0; background: url("images/pack-bloodx.jpg") 50% 50% / cover no-repeat; transition: transform 1.4s ease; }
+.strip:hover .img { transform: scale(1.05); }
+.strip span { position: absolute; left: 16px; bottom: 14px; font-family: var(--f-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.55); border: 1px solid var(--glass-line); }
+
+.course { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; }
+.course > * { min-width: 0; }
+.modules { padding: 8px 26px; border-radius: 22px; background: rgba(255,255,255,.04); border: 1px solid var(--glass-line); }
+.item { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--glass-line); transition: padding-left .25s, color .25s; }
+.item:last-child { border-bottom: 0; }
+.item:hover { padding-left: 10px; color: var(--rose); }
+.item .n { flex: 1; min-width: 0; }
+.item .n small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.4; }
+.item .p { font-family: var(--f-mono); font-size: .82rem; color: var(--rose); text-align: right; max-width: 15ch; overflow-wrap: anywhere; }
+.card.cta-card { background: linear-gradient(140deg, var(--ember), #8f0d17); border: none; color: #fff; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+.card.cta-card::before { background: radial-gradient(circle, var(--rose) 0%, transparent 70%); opacity: .5; }
+.card.cta-card .kicker { color: #ffe1e1; }
+.card.cta-card h3 { font-size: 1.5rem; }
+.card.cta-card p { color: #ffe9e9; margin: 0; }
+.card.cta-card .big { font-family: var(--f-display); font-weight: 900; font-size: 2.1rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.card.cta-card .big small { display: block; font-family: var(--f-body); font-weight: 400; font-size: .85rem; letter-spacing: 0; opacity: .85; margin-top: 6px; }
+.card.cta-card .btn { background: rgba(10,3,5,.4); color: #fff; border-color: rgba(255,255,255,.34); text-align: center; }
+.card.cta-card .btn:hover { background: rgba(10,3,5,.58); border-color: rgba(255,255,255,.55); }
+
+
+footer { margin-block: 56px 40px; padding: 22px 28px; border-radius: 22px; font-size: .9rem; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.steps .card h3 { font-size: 1.1rem; }
+.steps .card p { margin: 0; }
+.dc { margin-top: 26px; display: flex; gap: 14px 18px; flex-wrap: wrap; align-items: center; }
+.dc span { color: var(--muted); font-size: .9rem; }
+
+.folders-title { margin: 34px 0 14px; font-family: var(--f-mono); font-weight: 500; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--rose); }
+.folders { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.folder {
+  display: flex; align-items: center; gap: 10px; min-width: 0; padding: 12px 14px; border-radius: 14px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--glass-line);
+  font-family: var(--f-mono); font-size: .82rem; overflow-wrap: anywhere;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+.folder::before { content: ""; flex: none; width: 20px; height: 15px; background: linear-gradient(135deg, var(--rose), var(--ember)); clip-path: polygon(0 0, 42% 0, 52% 22%, 100% 22%, 100% 100%, 0 100%); }
+.folder:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.34); background: rgba(255,255,255,.09); }
+
+.compare { touch-action: pan-y; cursor: ew-resize; position: relative; width: 100%; max-width: 640px; margin: 0 auto; aspect-ratio: 1 / 1; border-radius: 22px; overflow: hidden; border: 1px solid var(--glass-line); background: #000; --pos: 50%; user-select: none; -webkit-user-select: none; }
+.compare:focus-within { outline: 2px solid var(--rose); outline-offset: 3px; }
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
+.compare .before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare .bar { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 14px rgba(255,255,255,.8); pointer-events: none; }
+.compare .lab { position: absolute; bottom: 14px; padding: 6px 12px; border-radius: 999px; font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; background: rgba(0,0,0,.62); border: 1px solid var(--glass-line); pointer-events: none; }
+.compare .lab.l { left: 14px; }
+.compare .lab.r { right: 14px; }
+.compare input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
+
+.services.q { margin-top: 26px; }
+.services.q .btn { margin-top: 18px; display: inline-block; }
+
+/* ---------- Efeitos controlados por script ---------- */
+.progress { position: fixed; z-index: 30; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 3px; pointer-events: none;
+  background: linear-gradient(90deg, var(--blood), var(--rose)); box-shadow: 0 0 12px var(--ember);
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.in { animation: rise .85s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: var(--d, 0ms); }
+nav, .hero > div, main > section.block, footer, .stat, .folder, .modules { position: relative; }
+.card::after, .stat::after, .folder::after, .modules::after, nav::after, .hero > div::after, main > section.block::after, footer::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255,120,120,.24), transparent 62%);
+  opacity: 0; transition: opacity .3s;
+}
+.lit::after { opacity: 1; }
+.ripple { position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; pointer-events: none; z-index: 2;
+  background: rgba(255,255,255,.38); transform: scale(0); animation: ripple .75s ease-out forwards; }
+.card > .ripple { position: absolute; }
+.type { margin: -12px 0 26px; font-family: var(--f-mono); font-size: .95rem; color: var(--rose); }
+.type b { color: var(--text); font-weight: 500; }
+.caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; vertical-align: -.15em; background: var(--ember); animation: blink 1s steps(1) infinite; }
+.btn:active { transform: scale(.96); }
+.card:active { transform: scale(.985); }
+
+/* ---------- Animações ---------- */
+@keyframes shine { to { background-position: -250% 0; } }
+@keyframes slide { to { transform: translateX(-50%); } }
+@keyframes rec { 50% { opacity: .25; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes rise { from { opacity: .3; transform: translateY(30px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes ripple { to { transform: scale(18); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- Telas pequenas ---------- */
+@media (max-width: 860px) {
+  .services, .course, .steps { grid-template-columns: 1fr; }
+  .folders { grid-template-columns: repeat(2, 1fr); }
+  .photo { background-position: 82% 50%; }
+  .photo::after { background: linear-gradient(180deg, rgba(7,4,5,.1), rgba(7,4,5,.5)); }
+  main > section.block { margin-top: 40px; padding: 28px 20px 32px; border-radius: 22px; }
+  .hero > div { padding: 26px 22px 30px; }
+  nav { border-radius: 26px; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .links { justify-content: center; }
+  .strip { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 440px) {
+  .stats { grid-template-columns: 1fr; }
+  .stat { display: flex; justify-content: space-between; align-items: baseline; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" aria-hidden="true"></div>
+<div class="photo" role="img" aria-label="Fundo preto e vermelho com um galho de cerejeira e o ideograma 我 em pincelada"></div>
+
+<header class="banner">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#topo">BLOOD<small>x</small></a>
+      <div class="links">
+        <a href="#pack">Pack</a>
+        <a href="#qualidade">Qualidade</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#discord">Discord</a>
+      </div>
+    </nav>
+
+    <div class="hero" id="topo">
+      <div>
+        <span class="tag">Edição para gamers</span>
+        <h1>Tudo para editar no After e no Vegas, <em>em um só pack</em>.</h1>
+        <p class="lead">O Pack do NunesX reúne aulas, presets, plugins, efeitos sonoros e configurações de renderização por R$ 45,00. Também fazemos edições sob encomenda para Free Fire e outros jogos. Tudo é vendido pelo nosso Discord.</p>
+        <p class="type">Feito para <b id="tw">After Effects</b><i class="caret" aria-hidden="true"></i></p>
+        <div class="cta">
+          <a class="btn primary" href="#pack">Garantir o pack</a>
+          <a class="btn" href="#servicos">Edição sob encomenda</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>R$ 45</b><span>pack completo</span></div>
+          <div class="stat"><b><span data-count="12">12</span></b><span>pastas de conteúdo</span></div>
+          <div class="stat"><b>+60 CC</b><span>e qualidade com AI</span></div>
+        </div>
+        <div class="timeline" aria-hidden="true">
+          <div class="tc"><span>CLIP / BEAT / FX</span><span id="tc">00:00:00:00</span></div>
+          <div class="track"><i style="flex:5"></i><i style="flex:3"></i><i style="flex:6"></i><i style="flex:2"></i><i style="flex:4"></i></div>
+          <div class="track t2"><i style="flex:3"></i><i style="flex:6"></i><i style="flex:2"></i><i style="flex:6"></i></div>
+          <div class="track t3"><i style="flex:2"></i><i style="flex:4"></i><i style="flex:3"></i><i style="flex:5"></i><i style="flex:3"></i></div>
+          <div class="playhead"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track-t">
+    <span>Pack do NunesX</span><span>Presets de After e Vegas</span><span>Efeitos sonoros</span><span>Aulas de edição</span><span>Edição sob encomenda</span><span>Venda pelo Discord</span>
+    <span>Pack do NunesX</span><span>Presets de After e Vegas</span><span>Efeitos sonoros</span><span>Aulas de edição</span><span>Edição sob encomenda</span><span>Venda pelo Discord</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="block" id="pack">
+    <span class="tag">Pack do NunesX</span>
+    <h2>Tudo para editar no After e no Vegas, num único pack</h2>
+    <p class="sub">Aulas, presets, plugins, efeitos sonoros e configurações de renderização. Garanta o seu pelo nosso Discord.</p>
+    <div class="strip">
+      <div class="img" role="img" aria-label="Arte vermelha e preta com a marca BLOODx no centro"></div>
+      <span>Pack completo</span>
+    </div>
+    <div class="course">
+      <div class="modules">
+        <div class="item"><span class="n">Aulas ensinando a editar<small>Aulas para quem está começando a editar.</small></span><span class="p">Aulas básicas</span></div>
+        <div class="item"><span class="n">Downloads para After Effects e Vegas<small>Os arquivos para começar a editar nos dois programas.</small></span><span class="p">Vegas+presets</span></div>
+        <div class="item"><span class="n">Efeitos e presets para Vegas e After<small>Presets de efeitos, textos em 3D, overlays e transições do Motion Bro.</small></span><span class="p">presets</span></div>
+        <div class="item"><span class="n">Plugins para After e Vegas<small>Plugins para usar nos seus projetos.</small></span><span class="p">After+plugins</span></div>
+        <div class="item"><span class="n">Efeitos sonoros profissionais<small>Efeitos sonoros para dar impacto aos seus edits.</small></span><span class="p">Efeitos sonoros</span></div>
+        <div class="item"><span class="n">+60 CC e qualidade com AI<small>CC e ajustes de qualidade com AI para melhorar o seu vídeo.</small></span><span class="p">Qualidade</span></div>
+        <div class="item"><span class="n">Configurações de renderização<small>Configurações para renderizar o vídeo com qualidade.</small></span><span class="p">config render</span></div>
+      </div>
+      <article class="card cta-card">
+        <div>
+          <span class="kicker">Pack completo</span>
+          <h3>Pack do NunesX</h3>
+        </div>
+        <p>Aulas, presets, plugins, efeitos sonoros e configurações de renderização, tudo no mesmo pack.</p>
+        <div class="big">R$ 45,00<small>Garanta já e aproveite ao máximo</small></div>
+        <a class="btn" href="https://discord.gg/nhfK7NwsP" target="_blank" rel="noopener noreferrer">Abrir ticket no Discord</a>
+      </article>
+    </div>
+    <h3 class="folders-title">Pastas que vêm no pack</h3>
+    <ul class="folders">
+      <li class="folder">Vegas+presets</li>
+      <li class="folder">text 3D</li>
+      <li class="folder">Qualidade</li>
+      <li class="folder">presets</li>
+      <li class="folder">overlays</li>
+      <li class="folder">Motion Bro (transição)</li>
+      <li class="folder">Intros</li>
+      <li class="folder">Fontes</li>
+      <li class="folder">Efeitos sonoros</li>
+      <li class="folder">config render</li>
+      <li class="folder">Aulas básicas</li>
+      <li class="folder">After+plugins</li>
+    </ul>
+  </section>
+
+  <section class="block" id="qualidade">
+    <span class="tag">Qualidade</span>
+    <h2>Qualidade antes e depois</h2>
+    <p class="sub">A mesma cena de Free Fire, sem qualidade e com qualidade. Arraste a barra para comparar. O pack traz a pasta Qualidade, com +60 CC e qualidade com AI.</p>
+    <div class="compare" id="compare">
+      <img class="after" src="images/com-qualidade.jpg" alt="Cena de Free Fire com qualidade: cores vivas e imagem nítida, personagem de casaco escuro correndo por um campo de grama dourada">
+      <img class="before" src="images/sem-qualidade.jpg" alt="A mesma cena sem qualidade: cores apagadas e imagem borrada">
+      <span class="lab l">Sem qualidade</span>
+      <span class="lab r">Com qualidade</span>
+      <div class="bar" aria-hidden="true"></div>
+      <input type="range" id="cmp" min="0" max="100" value="50" step="0.5" aria-label="Comparar a imagem sem qualidade e com qualidade">
+    </div>
+    <div class="services q">
+      <article class="card" style="--c: var(--blood)">
+        <span class="kicker">Nós aplicamos</span>
+        <h3>Qualidade aplicada por nós</h3>
+        <p>Você envia o seu clipe e a gente adiciona a qualidade com AI e os CC no seu vídeo.</p>
+        <div class="price">Valor a definir</div>
+        <a class="btn" href="https://discord.gg/nhfK7NwsP" target="_blank" rel="noopener noreferrer">Abrir ticket no Discord</a>
+      </article>
+      <article class="card" style="--c: var(--ember)">
+        <span class="kicker">Você mesmo aplica</span>
+        <h3>Comprar a qualidade</h3>
+        <p>Compre a qualidade (+60 CC e qualidade com AI) e aplique você mesmo nos seus edits.</p>
+        <div class="price">Valor a definir</div>
+        <a class="btn" href="https://discord.gg/nhfK7NwsP" target="_blank" rel="noopener noreferrer">Abrir ticket no Discord</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="servicos">
+    <span class="tag">Serviços de edição</span>
+    <h2>Quer a edição pronta? A gente edita para você</h2>
+    <p class="sub">Além do pack, fazemos edição sob encomenda. Mande os clipes pelo Discord e receba o vídeo pronto, com corte, ritmo, efeitos, cor e áudio. Valores a definir, de acordo com o material enviado.</p>
+    <div class="services">
+      <article class="card" style="--c: var(--blood)">
+        <span class="kicker">Vertical, 9:16</span>
+        <h3>Clips e Shorts de gameplay</h3>
+        <p>Seu melhor momento em até 60 segundos, com cortes rápidos, legenda e som dos tiros em destaque.</p>
+        <div class="meta"><span>até 60 s</span><span>Legenda</span><span>CapCut</span><span>Alight Motion</span></div>
+        <div class="price">Valor a definir</div>
+      </article>
+      <article class="card" style="--c: #7a0b14">
+        <span class="kicker">Montagem</span>
+        <h3>Montagem com beat sync</h3>
+        <p>Vários clutches num só vídeo, com cada corte na batida da música e slow motion nos momentos certos.</p>
+        <div class="meta"><span>até 2 min</span><span>Beat sync</span><span>Slow motion</span><span>After Effects</span></div>
+        <div class="price">Valor a definir</div>
+      </article>
+      <article class="card" style="--c: var(--ember)">
+        <span class="kicker">Efeitos</span>
+        <h3>Velocity, shake e transições</h3>
+        <p>Aquele edit com impacto: velocity, tremor de tela, glitch, flash e transições que acompanham a ação.</p>
+        <div class="meta"><span>Velocity</span><span>Glitch</span><span>Shake</span><span>Tracking</span></div>
+        <div class="price">Valor a definir</div>
+      </article>
+      <article class="card" style="--c: var(--rose)">
+        <span class="kicker">Identidade</span>
+        <h3>Capa, vinheta e intro</h3>
+        <p>Capa para o vídeo, vinheta de abertura e intro com a cara do seu canal ou da sua squad.</p>
+        <div class="meta"><span>Capa</span><span>Intro</span><span>Vinheta</span><span>Logo animada</span></div>
+        <div class="price">Valor a definir</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="discord">
+    <span class="tag">Como comprar</span>
+    <h2>Todo pedido acontece no nosso Discord</h2>
+    <p class="sub">Compra, atendimento e entrega ficam num só lugar, direto com a equipe.</p>
+    <div class="steps">
+      <article class="card" style="--c: var(--blood)">
+        <span class="kicker">Passo 1</span>
+        <h3>Entre no servidor</h3>
+        <p>Acesse o nosso Discord e confira as novidades do servidor.</p>
+      </article>
+      <article class="card" style="--c: var(--ember)">
+        <span class="kicker">Passo 2</span>
+        <h3>Abra um ticket</h3>
+        <p>Abra um ticket no canal de ticket para garantir o pack ou pedir uma edição, e envie seus clipes se for edição.</p>
+      </article>
+      <article class="card" style="--c: var(--rose)">
+        <span class="kicker">Passo 3</span>
+        <h3>Receba o que comprou</h3>
+        <p>Combine os detalhes com a equipe e receba o seu pack ou a sua edição.</p>
+      </article>
+    </div>
+    <div class="dc">
+      <a class="btn primary" href="https://discord.gg/nhfK7NwsP" target="_blank" rel="noopener noreferrer">Entrar no Discord</a>
+      <span>Para comprar, abra um ticket no servidor.</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>BLOODx, pack de edição e edição para jogos, 2026</span>
+    <span>Free Fire, After Effects e Vegas são marcas dos seus respectivos donos. Não temos vínculo com eles.</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ---- Linha do tempo: o cabeçote anda sozinho e segue o mouse ou o dedo
+  var tl = document.querySelector('.timeline');
+  var ph = tl && tl.querySelector('.playhead');
+  var tcEl = $('tc');
+  if (tl && ph && tcEl) {
+    var LOOP = 9000, pos = 0, scrub = false, last = performance.now(), onScreen = true;
+    var span = 0, lastTc = '';
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var measure = function () { span = Math.max(0, tl.clientWidth - 30); };
+    var paint = function () {
+      ph.style.transform = 'translateX(' + (pos * span).toFixed(1) + 'px)';
+      var fr = Math.floor(pos * (LOOP / 1000) * 24);
+      var txt = '00:00:' + pad(Math.floor(fr / 24)) + ':' + pad(fr % 24);
+      if (txt !== lastTc) { tcEl.textContent = txt; lastTc = txt; }
+    };
+    var fromPointer = function (e) {
+      var r = tl.getBoundingClientRect();
+      pos = Math.min(1, Math.max(0, (e.clientX - r.left - 14) / Math.max(1, r.width - 30)));
+      paint();
+    };
+    tl.addEventListener('pointerenter', function (e) { scrub = true; fromPointer(e); });
+    tl.addEventListener('pointerdown', function (e) { scrub = true; fromPointer(e); });
+    tl.addEventListener('pointermove', function (e) { if (scrub) fromPointer(e); });
+    tl.addEventListener('pointerleave', function () { scrub = false; });
+    tl.addEventListener('pointercancel', function () { scrub = false; });
+    tl.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') scrub = false; });
+    measure();
+    window.addEventListener('resize', measure);
+    paint();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(tl);
+    }
+    if (!reduce) {
+      (function loop(now) {
+        var dt = now - last; last = now;
+        if (!scrub && onScreen) { pos = (pos + dt / LOOP) % 1; paint(); }
+        requestAnimationFrame(loop);
+      })(last);
+    }
+  }
+
+  // ---- Blocos entram ao rolar a página
+  var revealSel = '.tag, h2, .sub, .card, .strip, .modules, .item, .folder, .stat, .compare, .timeline, .hero .lead, .hero .cta, footer';
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    [].forEach.call(document.querySelectorAll(revealSel), function (el) {
+      var sibs = [].filter.call(el.parentNode.children, function (c) { return c.matches(revealSel); });
+      el.style.setProperty('--d', Math.min(sibs.indexOf(el), 5) * 90 + 'ms');
+      io.observe(el);
+    });
+  }
+
+  // ---- Contagem do número ao aparecer na tela
+  var cnt = document.querySelector('[data-count]');
+  if (cnt && !reduce && 'IntersectionObserver' in window) {
+    var goal = parseInt(cnt.getAttribute('data-count'), 10);
+    var cio = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      cio.disconnect();
+      var t0 = performance.now();
+      (function s(now) {
+        var k = Math.min(1, (now - t0) / 1400);
+        cnt.textContent = Math.round(goal * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(s);
+      })(t0);
+    });
+    cio.observe(cnt);
+  }
+
+  // ---- Palavra que se escreve sozinha no topo
+  var tw = $('tw');
+  if (tw && !reduce) {
+    var words = ['After Effects', 'Vegas', 'Free Fire', 'Montagens', 'Highlights'], wi = 0, ci = words[0].length, del = true;
+    (function tick() {
+      var d;
+      if (del) {
+        ci--; d = 55;
+        if (ci <= 0) { del = false; wi = (wi + 1) % words.length; ci = 0; d = 320; }
+      } else {
+        ci++; d = 95;
+        if (ci >= words[wi].length) { del = true; d = 1700; }
+      }
+      tw.textContent = words[wi].slice(0, ci);
+      setTimeout(tick, d);
+    })();
+  }
+
+  // ---- Comparador de antes e depois, com uma demonstração ao aparecer na tela
+  var cmp = $('cmp'), box = $('compare');
+  if (cmp && box) {
+    var touched = false;
+    var setPos = function (v) { box.style.setProperty('--pos', v + '%'); };
+    cmp.addEventListener('input', function () { touched = true; setPos(cmp.value); });
+    // Arrastar em qualquer ponto da imagem (mouse ou dedo), não só no botão invisível do controle
+    var dragging = false;
+    var setFromX = function (x) {
+      var r = box.getBoundingClientRect();
+      var v = Math.min(100, Math.max(0, (x - r.left) / r.width * 100));
+      cmp.value = v;
+      setPos(v);
+    };
+    box.addEventListener('pointerdown', function (e) {
+      touched = true; dragging = true;
+      try { box.setPointerCapture(e.pointerId); } catch (err) {}
+      setFromX(e.clientX);
+    });
+    // No PC basta passar o mouse por cima; no celular, arraste o dedo
+    var qx = 0, qq = false;
+    var queueX = function (x) {
+      qx = x;
+      if (!qq) { qq = true; requestAnimationFrame(function () { qq = false; setFromX(qx); }); }
+    };
+    box.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'mouse') { touched = true; queueX(e.clientX); }
+      else if (dragging) setFromX(e.clientX);
+    });
+    box.addEventListener('pointerup', function () { dragging = false; });
+    box.addEventListener('pointercancel', function () { dragging = false; });
+    cmp.addEventListener('keydown', function () { touched = true; });
+    if (!reduce && 'IntersectionObserver' in window) {
+      var dio = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        dio.disconnect();
+        var t0 = performance.now();
+        (function demo(now) {
+          if (touched) return;
+          var t = (now - t0) / 3400;
+          if (t >= 1) { cmp.value = 50; setPos(50); return; }
+          var v = 50 + Math.sin(t * Math.PI * 2) * 38 * (1 - t * 0.3);
+          cmp.value = v; setPos(v);
+          requestAnimationFrame(demo);
+        })(t0);
+      }, { threshold: 0.6 });
+      dio.observe(box);
+    }
+  }
+
+  // ---- Barra de progresso e faixa que acelera com a rolagem
+  var prog = $('prog');
+  var track = document.querySelector('.track-t');
+  var ticker = (!reduce && track && track.getAnimations) ? track.getAnimations()[0] : null;
+  var lastY = window.scrollY, vel = 0, rate = 1, applied = 1, spinning = false, scrollQueued = false;
+  function spin() {
+    vel *= 0.9;
+    rate += ((1 + Math.min(vel / 10, 5)) - rate) * 0.12;
+    if (Math.abs(rate - applied) > 0.02) { ticker.updatePlaybackRate(rate); applied = rate; }
+    if (vel > 0.05 || Math.abs(rate - 1) > 0.02) {
+      requestAnimationFrame(spin);
+    } else {
+      ticker.updatePlaybackRate(1);
+      applied = rate = 1;
+      spinning = false;
+    }
+  }
+  function onScrollFrame() {
+    scrollQueued = false;
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+    if (ticker) {
+      vel = Math.max(vel, Math.abs(y - lastY));
+      if (!spinning) { spinning = true; requestAnimationFrame(spin); }
+    }
+    lastY = y;
+  }
+  function onScroll() { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScrollFrame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---- Brilho sob o mouse (ou o dedo), só dentro do quadro em que o ponteiro está
+  var BOXES = '.card, .stat, .folder, .modules, nav, .hero > div, main > section.block, footer';
+  var lit = null, litTimer = 0, lastEv = null, litQueued = false;
+  if (!reduce) {
+    var applyLight = function () {
+      litQueued = false;
+      var e = lastEv;
+      if (!e) return;
+      var box = e.target.closest && e.target.closest(BOXES);
+      if (box !== lit) {
+        if (lit) lit.classList.remove('lit');
+        lit = box;
+        if (lit) lit.classList.add('lit');
+      }
+      if (box) {
+        var r = box.getBoundingClientRect();
+        box.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        box.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }
+    };
+    var light = function (e) {
+      clearTimeout(litTimer);
+      lastEv = e;
+      if (!litQueued) { litQueued = true; requestAnimationFrame(applyLight); }
+    };
+    var unlight = function () { lastEv = null; if (lit) { lit.classList.remove('lit'); lit = null; } };
+    document.addEventListener('pointermove', light, { passive: true });
+    document.addEventListener('pointerdown', light, { passive: true });
+    document.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') litTimer = setTimeout(unlight, 350); });
+    document.addEventListener('pointercancel', unlight);
+    document.documentElement.addEventListener('mouseleave', unlight);
+  }
+
+  // ---- Inclinação dos cartões (mouse)
+  [].forEach.call(document.querySelectorAll('.card'), function (c) {
+    if (!(fine && !reduce && (c.parentNode.classList.contains('services') || c.classList.contains('cta-card')))) return;
+    var ev = null, queued = false;
+    c.addEventListener('pointermove', function (e) {
+      ev = e;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        if (!ev) return;
+        var r = c.getBoundingClientRect();
+        var x = ev.clientX - r.left, y = ev.clientY - r.top;
+        c.style.transition = 'transform .12s ease-out, border-color .35s';
+        c.style.transform = 'perspective(900px) rotateX(' + (((y / r.height) - .5) * -6).toFixed(2) + 'deg) rotateY(' + (((x / r.width) - .5) * 6).toFixed(2) + 'deg) translateY(-6px)';
+      });
+    });
+    c.addEventListener('pointerleave', function () { ev = null; c.style.transition = ''; c.style.transform = ''; });
+  });
+
+  // ---- Botões magnéticos: puxam em direção ao mouse quando ele chega perto
+  var RAIO = 150;   // distância em px na qual o botão começa a puxar
+  var FORCA = 0.42;
+  var coarse = window.matchMedia('(pointer: coarse)').matches;
+  if (!coarse && !reduce) {
+    var btns = [].slice.call(document.querySelectorAll('.btn'));
+    var mx = 0, my = 0, magQueued = false;
+    var magnetize = function () {
+      magQueued = false;
+      var rects = btns.map(function (b) { return b.getBoundingClientRect(); });
+      btns.forEach(function (b, i) {
+        var r = rects[i];
+        var dx = mx - (r.left + r.width / 2);
+        var dy = my - (r.top + r.height / 2);
+        var d = Math.hypot(dx, dy);
+        if (d < RAIO) {
+          var f = (1 - d / RAIO) * FORCA;
+          b.style.transform = 'translate(' + (dx * f).toFixed(1) + 'px, ' + (dy * f).toFixed(1) + 'px) scale(' + (b.classList.contains('down') ? 0.96 : 1.05) + ')';
+        } else if (b.style.transform) {
+          b.style.transform = '';
+        }
+      });
+    };
+    window.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      if (!magQueued) { magQueued = true; requestAnimationFrame(magnetize); }
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', function () {
+      btns.forEach(function (b) { b.style.transform = ''; });
+    });
+    document.addEventListener('pointerdown', function (e) {
+      var b = e.target.closest && e.target.closest('.btn');
+      if (b) { b.classList.add('down'); b.style.transform = 'scale(.96)'; }
+    });
+    var release = function () {
+      btns.forEach(function (b) { b.classList.remove('down'); });
+      if (!magQueued) { magQueued = true; requestAnimationFrame(magnetize); }
+    };
+    document.addEventListener('pointerup', release);
+    document.addEventListener('pointercancel', release);
+  }
+
+  // ---- Onda no ponto do toque ou do clique (celular e PC)
+  if (!reduce) {
+    document.addEventListener('pointerdown', function (e) {
+      var host = e.target.closest && e.target.closest('.btn, .links a, .card');
+      if (!host || host.classList.contains('form')) return;
+      var r = host.getBoundingClientRect();
+      var span = document.createElement('span');
+      span.className = 'ripple';
+      span.style.left = (e.clientX - r.left) + 'px';
+      span.style.top = (e.clientY - r.top) + 'px';
+      host.appendChild(span);
+      setTimeout(function () { span.remove(); }, 800);
+    });
+  }
+})();
+</script>
+
+<style>
+/* Botão do Discord preso no canto da tela (só o logo) */
+.discord-fab {
+  position: fixed; z-index: 50;
+  right: max(20px, env(safe-area-inset-right, 0px));
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,61,61,.26), rgba(10,3,5,.34) 70%);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,150,150,.3);
+  color: #ffe1e1; text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 14px 40px -12px rgba(217,20,32,.85);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+}
+.discord-fab:hover { transform: translateY(-3px); background: linear-gradient(135deg, rgba(255,90,90,.42), rgba(10,3,5,.34) 70%); border-color: rgba(255,170,170,.65); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 18px 44px -10px rgba(255,61,61,.95); }
+.discord-fab:active { transform: scale(.94); }
+.discord-fab svg { width: 28px; height: 28px; fill: currentColor; shape-rendering: geometricPrecision; }
+/* O pulso some para quem pediu menos movimento */
+.discord-fab::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; animation: discord-ring 2s ease-out infinite; }
+@keyframes discord-ring { from { box-shadow: 0 0 0 0 rgba(255,61,61,.55); } to { box-shadow: 0 0 0 20px rgba(255,61,61,0); } }
+@media (prefers-reduced-motion: reduce) { .discord-fab::after { animation: none; } }
+</style>
+<a class="discord-fab" href="https://discord.gg/nhfK7NwsP" target="_blank" rel="noopener noreferrer" aria-label="Entrar no Discord">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+</a>
+
+</body></html>
